@@ -18,9 +18,10 @@ class Car(models.Model):
     active = models.BooleanField(default=False)
     create_date = models.DateTimeField(auto_now_add=True,auto_now=False)
     update_date = models.DateTimeField(auto_now_add=False,auto_now=True)
-    owner =
+    owner = models.CharField(max_length=25)
     photos = models.ImageField()
     city =
+
 
 
 class Owner(models.Model):
