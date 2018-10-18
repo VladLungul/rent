@@ -7,6 +7,17 @@ class Car(models.Model):
     grade = models.CharField(max_length=25)
     year = models.CharField(max_length=4)
     fuel_type =
+    engine_capacity =
+    drive_unit =
+    gearbox =
+    car_class =
+    rent_type =
+    price =
+    discount =
+    active = models.BooleanField(default=False)
+    create_date = models.DateTimeField()
+    update_date = models.DateTimeField()
+    owner =
 
 
 
