@@ -9,6 +9,7 @@ class Car(models.Model):
     fuel_type =
 
 
+
 class Owner(models.Model):
 
 
