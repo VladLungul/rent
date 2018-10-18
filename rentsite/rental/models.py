@@ -6,6 +6,7 @@ class Car(models.Model):
     model = models.CharField(max_length=25)
     grade = models.CharField(max_length=25)
     year = models.CharField(max_length=4)
+    vin = models.CharField(max_length=20)
     fuel_type =
     engine_capacity =
     drive_unit =
@@ -15,10 +16,11 @@ class Car(models.Model):
     price =
     discount =
     active = models.BooleanField(default=False)
-    create_date = models.DateTimeField()
-    update_date = models.DateTimeField()
+    create_date = models.DateTimeField(auto_now_add=True,auto_now=False)
+    update_date = models.DateTimeField(auto_now_add=False,auto_now=True)
     owner =
-
+    photos = models.ImageField()
+    city =
 
 
 class Owner(models.Model):
