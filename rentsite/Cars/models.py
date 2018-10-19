@@ -24,12 +24,7 @@ class Car(models.Model):
 
 
 
-class Owner(models.Model):
 
 
-class RegisteredUser(models.Model):
-
-
-class UnregisteredUser(models.Model):
 
 
