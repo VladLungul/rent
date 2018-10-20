@@ -1,7 +1,7 @@
 from django.db import models
 
 class Owner(models.Model):
-    owner_id =
+    owner_id = models.AutoField(primary_key=True)
     name =
     phonenumber =
     email = models.EmailField()
