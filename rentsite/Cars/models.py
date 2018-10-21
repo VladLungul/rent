@@ -1,5 +1,5 @@
 from django.db import models
-from .choice import FUEL, YEAR_CHOICES, GEARBOX, CAR_CLASS, RENT_TYPE
+from .choice import FUEL, YEAR_CHOICES, GEARBOX, CAR_CLASS, RENT_TYPE, DRIVE_UNIT
 
 
 
@@ -13,7 +13,7 @@ class Car(models.Model):
     vin = models.CharField(max_length=20)
     fuel_type = models.CharField(max_length=25, choices=FUEL)
     engine_capacity = models.CharField(max_length=4)
-    drive_unit = models.CharField(max_length=20)
+    drive_unit = models.CharField(max_length=20, choices=DRIVE_UNIT)
     gearbox = models.CharField(max_length=20, choices=GEARBOX)
     car_class = models.CharField(max_length=20, choices=CAR_CLASS)
     rent_type = models.CharField(max_length=20, choices=RENT_TYPE)
