@@ -1,16 +1,17 @@
 from django.db import models
+from .choice import fuel, YEAR_CHOICES
+
+
+
 
 class Car(models.Model):
     car_id = models.AutoField(primary_key=True)
     manufacturer = models.CharField(max_length=25)
     model = models.CharField(max_length=25)
     grade = models.CharField(max_length=25)
-    year = models.CharField(max_length=4)
+    year = models.IntegerField(choices=YEAR_CHOICES)
     vin = models.CharField(max_length=20)
-    fuel_type = models.CharField(max_length=25, choices=(('Petrol','Бензин'),
-                                          ('Diesel','Дизель'),
-                                          ('Gas/Petrol','Газ/бензин'),
-                                          ('Hybrid', 'Гибрид')))
+    fuel_type = models.CharField(max_length=25, choices=fuel)
     engine_capacity = models.CharField(max_length=20)
     drive_unit = models.CharField(max_length=20)
     gearbox = models.CharField(max_length=20)
