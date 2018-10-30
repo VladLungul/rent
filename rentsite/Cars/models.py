@@ -1,8 +1,6 @@
 from django.db import models
 from .choice import FUEL, YEAR_CHOICES, GEARBOX, CAR_CLASS, RENT_TYPE, DRIVE_UNIT
-
-
-
+from Owner.models import Owner
 
 class Car(models.Model):
     car_id = models.AutoField(primary_key=True)
@@ -22,15 +20,17 @@ class Car(models.Model):
     active = models.BooleanField(default=False)
     create_date = models.DateTimeField(auto_now_add=True,auto_now=False)
     update_date = models.DateTimeField(auto_now_add=False,auto_now=True)
-   # owner = models.ForeignKey(Own, related_name='cars', on_delete=False)
+    owner = models.ForeignKey(Owner, related_name='cars', on_delete=False, default=0)
     photos = models.ImageField(upload_to='cars/%Y/%m/%d/', blank=True,)
     city = models.CharField(max_length=20)
+    description = models.TextField(default=0)
 
     def __str__(self):
         return f'S({self.car_id}, {self.manufacturer},{self.model}, {self.grade}, {self.year}, ' \
                f'{self.vin}, {self.fuel_type},{self.engine_capacity}, {self.drive_unit}, {self.gearbox},' \
                f'{self.car_class}, {self.rent_type},{self.price}, {self.discount}, {self.active},' \
-               f'{self.create_date}, {self.update_date}, {self.photos}, {self.city})'
+               f'{self.create_date}, {self.update_date}, {self.photos}, {self.city}, {self.owner},' \
+               f'{self.description})'
 
     def __repr__(self):
         return self.__str__
