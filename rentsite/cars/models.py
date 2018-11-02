@@ -1,17 +1,18 @@
 from django.db import models
 from .choice import FUEL, YEAR_CHOICES, GEARBOX, CAR_CLASS, DRIVE_UNIT
-from Owner.models import Owner
+#from owner.models import Owner
+
 
 class Rent_type(models.Model):
     name = models.CharField(max_length=25)
     slug = models.SlugField()
-    
+
     def __str__(self):
         return f'S({self.name}, {self.slug})'
 
     def __repr__(self):
         return self.__str__
-    
+
 
 class Car(models.Model):
     car_id = models.AutoField(primary_key=True)
@@ -29,10 +30,10 @@ class Car(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     discount = models.DecimalField(max_digits=10, decimal_places=2)
     active = models.BooleanField(default=False)
-    create_date = models.DateTimeField(auto_now_add=True,auto_now=False)
-    update_date = models.DateTimeField(auto_now_add=False,auto_now=True)
-    owner = models.ForeignKey(Owner, related_name='cars', on_delete=False, default=0)
-    photos = models.ImageField(upload_to='cars/%Y/%m/%d/', blank=True,)
+    create_date = models.DateTimeField(auto_now_add=True, auto_now=False)
+    update_date = models.DateTimeField(auto_now_add=False, auto_now=True)
+    car_owner = models.ForeignKey('owner.Owner', related_name='carslist', on_delete=False, default=0)
+    photos = models.ImageField(upload_to='cars/%Y/%m/%d/', blank=True, )
     city = models.CharField(max_length=20)
     description = models.TextField(default=0)
 
@@ -45,9 +46,3 @@ class Car(models.Model):
 
     def __repr__(self):
         return self.__str__
-
-
-
-
-
-

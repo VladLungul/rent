@@ -4,7 +4,7 @@ from .models import Car, Rent_type
 class CarAdmin(admin.ModelAdmin):
     list_display = ('car_id', 'manufacturer', 'model', 'grade', 'year', 'fuel_type', 'engine_capacity',
                     'car_class', 'rent_type', 'price', 'discount', 'active', 'create_date',
-                    'update_date', 'city', 'owner')
+                    'update_date', 'city', 'car_owner')
     ordering = ('car_id', 'rent_type')
     list_display_links = list_display
 
