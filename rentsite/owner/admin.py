@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Owner
+from .models import Owner, BlackList
 
 
 class OwnerAdmin(admin.ModelAdmin):
@@ -7,4 +7,11 @@ class OwnerAdmin(admin.ModelAdmin):
     ordering = ('owner_id', 'phonenumber', 'cash_account')
     list_display_links = list_display
 
+class BlackListAdmin(admin.ModelAdmin):
+    list_display = ('blackownerid', 'owner_phonenumber', 'carsinblacklistvin')
+    ordering = ('blackownerid', 'owner_phonenumber', 'carsinblacklistvin')
+    list_display_links = list_display
+
+
 admin.site.register(Owner, OwnerAdmin)
+admin.site.register(BlackList, BlackListAdmin)
