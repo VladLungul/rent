@@ -3,8 +3,8 @@ from .models import Owner, BlackList
 
 
 class OwnerAdmin(admin.ModelAdmin):
-    list_display = ('owner_id', 'name', 'email', 'phonenumber', 'cash_account')
-    ordering = ('owner_id', 'phonenumber', 'cash_account')
+    list_display = ('owner_id', 'name', 'email', 'phonenumber', 'cash_account', 'approve')
+    ordering = ('owner_id', 'phonenumber', 'cash_account', 'approve')
     list_display_links = list_display
 
 class BlackListAdmin(admin.ModelAdmin):

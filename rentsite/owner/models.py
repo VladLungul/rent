@@ -14,11 +14,12 @@ class Owner(models.Model):
     own_cars = models.ForeignKey('cars.Car', on_delete=models.CASCADE, related_name='+',)
     incoming_orders = models.CharField(max_length=25)
     city = models.CharField(max_length=25)
+    approve = models.BooleanField(default=False)
 
     def __str__(self):
         return f'S({self.owner_id}, {self.name},{self.phonenumber}, {self.email}, {self.password},' \
                f'{self.cash_account}, {self.registration_photo},{self.owner_type}, {self.incoming_orders},' \
-               f'{self.city}, {self.own_cars}, {self.ident_code})'
+               f'{self.city}, {self.own_cars}, {self.ident_code}, {self.approve})'
 
     def __repr__(self):
         return self.__str__
