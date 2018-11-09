@@ -1,6 +1,6 @@
 from django.db import models
 from .choice import FUEL, YEAR_CHOICES, GEARBOX, CAR_CLASS, DRIVE_UNIT
-#from owner.models import Owner
+
 
 
 class Rent_type(models.Model):
@@ -32,7 +32,7 @@ class Car(models.Model):
     active = models.BooleanField(default=False)
     create_date = models.DateTimeField(auto_now_add=True, auto_now=False)
     update_date = models.DateTimeField(auto_now_add=False, auto_now=True)
-    car_owner = models.ForeignKey('owner.Owner', related_name='carslist', on_delete=False, default=0)
+    #car_owner = models.ForeignKey('owner.Owner', related_name='carslist', on_delete=False, default=0)
     photos = models.ImageField(upload_to='cars/%Y/%m/%d/', blank=True, )
     city = models.CharField(max_length=20)
     description = models.TextField(default=0)
@@ -41,7 +41,7 @@ class Car(models.Model):
         return f'S({self.car_id}, {self.manufacturer},{self.model}, {self.grade}, {self.year}, ' \
                f'{self.vin}, {self.fuel_type},{self.engine_capacity}, {self.drive_unit}, {self.gearbox},' \
                f'{self.car_class}, {self.rent_type},{self.price}, {self.discount}, {self.active},' \
-               f'{self.create_date}, {self.update_date}, {self.photos}, {self.city}, {self.owner},' \
+               f'{self.create_date}, {self.update_date}, {self.photos}, {self.city},' \
                f'{self.description})'
 
     def __repr__(self):
