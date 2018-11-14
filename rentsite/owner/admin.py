@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Profile
 
-
+admin.site.register(Profile)
 #class OwnerAdmin(admin.ModelAdmin):
 #    list_display = ('first_name', 'last_name', 'email')
 #    ordering = ('owner_id', 'phonenumber', 'cash_account', 'approve')
