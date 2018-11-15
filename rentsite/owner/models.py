@@ -6,27 +6,19 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    #name = models.CharField(max_length=25)
-    #phonenumber = models.CharField(max_length=25)
-    #email = models.EmailField()
-    #password = models.CharField(max_length=25)
     cash_account = models.CharField(max_length=25, default=0)
-    registration_photo = models.ImageField()
+    registration_photo = models.ImageField(null=True)
     ident_code = models.CharField(max_length=14)
     owner_type = models.CharField(max_length=25, choices=(('Private', 'Частное лицо'), ('Company', 'Организация')))
-    own_cars = models.ForeignKey('cars.Car', on_delete=models.CASCADE, related_name='+',)
+    own_cars = models.CharField(max_length=14)
     incoming_orders = models.CharField(max_length=25)
     city = models.CharField(max_length=25)
     approve = models.BooleanField(default=False)
 
-    @receiver(post_save, sender=User)
-    def create_user_profile(sender, instance, created, **kwargs):
-        if created:
-            Profile.objects.create(user=instance)
-
-    @receiver(post_save, sender=User)
-    def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
 
     #def __str__(self):
     #    return f'S({self.owner_id}, {self.name},{self.phonenumber}, {self.email}, {self.password},' \

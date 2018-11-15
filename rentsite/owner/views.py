@@ -1,11 +1,9 @@
 from django.contrib.auth.decorators import login_required
-from django.db import transaction
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserForm, ProfileForm
 
 @login_required
-@transaction.atomic
 def update_profile(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
@@ -13,10 +11,10 @@ def update_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, _('Your profile was successfully updated!'))
+            messages.success(request, ('Your profile was successfully updated!'))
             return redirect('settings:profile')
         else:
-            messages.error(request, _('Please correct the error below.'))
+            messages.error(request, ('Please correct the error below.'))
     else:
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
