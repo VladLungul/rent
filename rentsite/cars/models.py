@@ -26,7 +26,7 @@ class Car(models.Model):
     drive_unit = models.CharField(max_length=20, choices=DRIVE_UNIT)
     gearbox = models.CharField(max_length=20, choices=GEARBOX)
     car_class = models.CharField(max_length=20, choices=CAR_CLASS)
-    rent_type = models.ForeignKey(Rent_type, related_name='renttype', on_delete=False, default=0)
+    rent_type = models.ForeignKey(Rent_type, on_delete=False, default=0)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     discount = models.DecimalField(max_digits=10, decimal_places=2)
     active = models.BooleanField(default=False)
@@ -38,11 +38,7 @@ class Car(models.Model):
     description = models.TextField(default=0)
 
     def __str__(self):
-        return f'S({self.car_id}, {self.manufacturer},{self.model}, {self.grade}, {self.year}, ' \
-               f'{self.vin}, {self.fuel_type},{self.engine_capacity}, {self.drive_unit}, {self.gearbox},' \
-               f'{self.car_class}, {self.rent_type},{self.price}, {self.discount}, {self.active},' \
-               f'{self.create_date}, {self.update_date}, {self.photos}, {self.city},' \
-               f'{self.description})'
+       return self.manufacturer 
 
     def __repr__(self):
         return self.__str__

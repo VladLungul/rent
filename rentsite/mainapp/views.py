@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
-def show(request):
-    return HttpResponse('Rentsite')
+
+def home(request):
+    return render(request, 'mainapp/index.html')

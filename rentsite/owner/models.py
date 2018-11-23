@@ -7,12 +7,18 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     cash_account = models.CharField(max_length=25, default=0)
-    registration_photo = models.ImageField(null=True)
-    ident_code = models.CharField(max_length=14)
-    owner_type = models.CharField(max_length=25, choices=(('Private', 'Частное лицо'), ('Company', 'Организация')))
-    own_cars = models.CharField(max_length=14)
-    incoming_orders = models.CharField(max_length=25)
-    city = models.CharField(max_length=25)
+    registration_photo = models.ImageField(null=True, blank=True)
+    ident_code = models.CharField(max_length=14, default="")
+    owner_type = models.CharField(
+        max_length=25, 
+        choices=(
+            ('Private', 'Частное лицо'),
+            ('Company', 'Организация')),
+        default='Private'
+    )
+    own_cars = models.CharField(max_length=14, default='')
+    incoming_orders = models.CharField(max_length=25, default='')
+    city = models.CharField(max_length=25, default="Киев")
     approve = models.BooleanField(default=False)
 
 @receiver(post_save, sender=User)
