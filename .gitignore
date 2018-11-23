@@ -6,7 +6,7 @@ __pycache__
 *.code-workspace
 
 # local db
-rentsite/db.*
+*.sqlite3
 
 # js
 node_modules
