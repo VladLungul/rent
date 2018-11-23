@@ -2,6 +2,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserForm, ProfileForm
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import FormView
+
+
 
 @login_required
 def update_profile(request):
@@ -22,3 +26,4 @@ def update_profile(request):
         'user_form': user_form,
         'profile_form': profile_form
     })
+
