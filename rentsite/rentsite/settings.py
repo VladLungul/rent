@@ -28,6 +28,7 @@ INSTALLED_APPS = [
 
     'webpack_loader',
     
+    'authentication_app',
     'cars',
     'owner',
     'orders',
