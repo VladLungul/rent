@@ -1,9 +1,12 @@
 # python stuff
-.__pycache__
+__pycache__
 
 # editor related stuff
 .idea
 *.code-workspace
 
 # local db
-*.sqlite
+rentsite/db.*
+
+# js
+node_modules
