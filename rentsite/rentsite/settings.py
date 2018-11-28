@@ -18,22 +18,27 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+CORE_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'webpack_loader',
-    
-    'authentication_app',
-    'cars',
-    'owner',
-    'orders',
-    'mainapp',
 ]
+
+THIRD_PARTY_APPS = [
+    'webpack_loader',
+]
+
+LOCAL_APPS = [
+    'authentication_app',
+    'mainapp',
+    'userprofile',
+    'cars',
+]
+
+INSTALLED_APPS = CORE_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 
 WEBPACK_LOADER = {
@@ -123,3 +128,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
 )
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
