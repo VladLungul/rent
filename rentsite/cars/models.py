@@ -1,5 +1,6 @@
 from django.db import models
 from .choice import FUEL, YEAR_CHOICES, GEARBOX, CAR_CLASS, DRIVE_UNIT
+from django.conf import settings
 
 
 
@@ -15,7 +16,7 @@ class Rent_type(models.Model):
 
 
 class Car(models.Model):
-    car_id = models.AutoField(primary_key=True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     manufacturer = models.CharField(max_length=25)
     model = models.CharField(max_length=25)
     grade = models.CharField(max_length=25)
@@ -28,17 +29,12 @@ class Car(models.Model):
     car_class = models.CharField(max_length=20, choices=CAR_CLASS)
     rent_type = models.ForeignKey(Rent_type, on_delete=False, default=0)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    discount = models.DecimalField(max_digits=10, decimal_places=2)
-    active = models.BooleanField(default=False)
-    create_date = models.DateTimeField(auto_now_add=True, auto_now=False)
-    update_date = models.DateTimeField(auto_now_add=False, auto_now=True)
-    #car_owner = models.ForeignKey('owner.Owner', related_name='carslist', on_delete=False, default=0)
-    photos = models.ImageField(upload_to='cars/%Y/%m/%d/', blank=True, )
+    photos = models.ImageField(upload_to='cars/%Y/%m/%d/')
     city = models.CharField(max_length=20)
-    description = models.TextField(default=0)
+    description = models.TextField(default="")
 
     def __str__(self):
-       return self.manufacturer 
+       return self.manufacturer
 
     def __repr__(self):
         return self.__str__

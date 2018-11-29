@@ -4,6 +4,7 @@ __pycache__
 # editor related stuff
 .idea
 *.code-workspace
+.vscode
 
 # local db
 *.sqlite3
