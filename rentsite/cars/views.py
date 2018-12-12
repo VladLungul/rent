@@ -15,7 +15,6 @@ class CarView(LoginRequiredMixin, View):
         form = CarForm()
         return render(request, 'cars/addCar.html', context={'form': form})
 
-    
     def post(self, request):
         form = CarForm(request.POST, request.FILES or None)
         if form.is_valid():

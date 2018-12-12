@@ -34,7 +34,7 @@ class Car(models.Model):
     description = models.TextField(default="")
 
     def __str__(self):
-       return self.manufacturer
+        return self.manufacturer
 
     def __repr__(self):
         return self.__str__

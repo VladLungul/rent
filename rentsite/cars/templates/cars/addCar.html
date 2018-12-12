@@ -7,10 +7,10 @@
     <title>Add Car</title>
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data" novalidate>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type='submit'>Submit</button>
-    </form>
+<form method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type='submit'>Submit</button>
+</form>
 </body>
 </html>

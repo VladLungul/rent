@@ -7,11 +7,10 @@ class UserProfile(models.Model):
     approved = models.BooleanField(default=False)
     city = models.CharField(max_length=25, default="Киев")
     owner_type = models.CharField(
-        max_length=25, 
+        max_length=25,
         choices=(
             ('Private', 'Частное лицо'),
             ('Company', 'Организация')),
         default='Private'
     )
     photo = models.ImageField(upload_to="photos", default="photos/default.png")
-

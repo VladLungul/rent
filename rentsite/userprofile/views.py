@@ -15,7 +15,7 @@ class ProfileView(LoginRequiredMixin, View):
         profile = request.user.userprofile
         form = ProfileForm(instance=profile)
         return render(request, 'userprofile/profile.html', context={'form': form})
-    
+
     def post(self, request):
         profile = request.user.userprofile
         form = ProfileForm(request.POST, request.FILES or None, instance=profile)
@@ -23,6 +23,3 @@ class ProfileView(LoginRequiredMixin, View):
             form.save()
             return redirect(reverse_lazy('profile'))
         return render(request, 'userprofile/profile.html', context={'form': form})
-
-        
-

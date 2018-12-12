@@ -6,7 +6,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -20,7 +19,9 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('approved', models.BooleanField(default=False)),
                 ('city', models.CharField(default='Киев', max_length=25)),
-                ('owner_type', models.CharField(choices=[('Private', 'Частное лицо'), ('Company', 'Организация')], default='Private', max_length=25)),
+                ('owner_type',
+                 models.CharField(choices=[('Private', 'Частное лицо'), ('Company', 'Организация')], default='Private',
+                                  max_length=25)),
                 ('photo', models.ImageField(default='photos/default.png', upload_to='photos')),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
