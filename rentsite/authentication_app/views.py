@@ -1,20 +1,22 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib import messages
+from userprofile.forms import UserCreateForm
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserCreateForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
+            email = form.cleaned_data.get("email")
+            user = authenticate(username=username, password=password, email=email)
             login(request, user)
             return redirect('index')
     else:
-        form = UserCreationForm()
+        form = UserCreateForm()
 
     context = {'form': form}
     return render(request, 'authentication_app/register.html', context)
