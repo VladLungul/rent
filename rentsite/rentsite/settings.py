@@ -29,6 +29,7 @@ CORE_APPS = [
 
 THIRD_PARTY_APPS = [
     'webpack_loader',
+    'crispy_forms',
 ]
 
 LOCAL_APPS = [

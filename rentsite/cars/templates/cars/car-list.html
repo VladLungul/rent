@@ -1,0 +1,15 @@
+{% for car in cars %}
+
+    <p>Manufacturer: {{car.manufacturer}}</p>
+    <p>Model: {{car.model}}</p>
+    <p>Year: {{car.year}}</p>
+
+    <div style="display: flex">
+    {% for image in car.carimage_set.all %}
+        <img height=120 width=120 src="{{image.image.url}}"/>
+    {% endfor %}
+    </div>
+{% empty %}
+<i>no cars</i>
+
+{% endfor %}
