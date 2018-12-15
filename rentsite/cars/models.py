@@ -15,6 +15,11 @@ class Rent_type(models.Model):
         return self.__str__
 
 
+class CarImage(models.Model):
+    car = models.ForeignKey('cars.Car', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='cars/%Y/%m/%d/')
+
+
 class Car(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     manufacturer = models.CharField(max_length=25)
@@ -27,14 +32,12 @@ class Car(models.Model):
     drive_unit = models.CharField(max_length=20, choices=DRIVE_UNIT)
     gearbox = models.CharField(max_length=20, choices=GEARBOX)
     car_class = models.CharField(max_length=20, choices=CAR_CLASS)
-    rent_type = models.ForeignKey(Rent_type, on_delete=False, default=0)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    photos = models.ImageField(upload_to='cars/%Y/%m/%d/')
     city = models.CharField(max_length=20)
     description = models.TextField(default="")
 
     def __str__(self):
-        return self.manufacturer
-
+        return self.vin
+    
     def __repr__(self):
-        return self.__str__
+        return self.vin

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Car
+from .models import Car, CarImage
 
 # class CarAdmin(admin.ModelAdmin):
 #     list_display = ('car_id', 'manufacturer', 'model', 'grade', 'year', 'fuel_type', 'engine_capacity',
@@ -13,4 +13,5 @@ from .models import Car
 #     list_display_links = list_display
 
 admin.site.register(Car)
+admin.site.register(CarImage)
 # admin.site.register(Rent_type, RenttypeAdmin)
