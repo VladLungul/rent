@@ -1,8 +1,11 @@
 from django.urls import path
-from .views import ProfileView
-from cars.views import CarView
+from .views import ProfileView, CabinetView
+from cars.views import CarsView, CarsAddView
+
 
 urlpatterns = [
+    path('', CabinetView.as_view(), name='cabinet'),
     path('profile/', ProfileView.as_view(), name='profile'),
-    path('cars/add/', CarView.as_view(), name='addCar')
+    path('cars/', CarsView.as_view(), name='cars'),
+    path('cars/add/', CarsAddView.as_view(), name='add-car')
 ]
