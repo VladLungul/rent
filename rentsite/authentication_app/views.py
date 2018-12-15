@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib import messages
-from userprofile.forms import UserCreateForm
+from .forms import UserCreateForm
+
 
 def register(request):
     if request.method == 'POST':
@@ -11,8 +12,7 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
-            email = form.cleaned_data.get("email")
-            user = authenticate(username=username, password=password, email=email)
+            user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('index')
     else:
