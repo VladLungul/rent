@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.contrib.auth import authenticate, login, update_session_auth_hash, logout
 from django.contrib import messages
 from .forms import UserCreateForm
 
@@ -29,8 +29,13 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user:
             login(request, user)
-            return redirect('index')
+            return redirect('mainapp:index')
     return render(request, 'authentication_app/login.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('mainapp:index')
 
 
 def password_edit(request):

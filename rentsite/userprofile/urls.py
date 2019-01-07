@@ -3,6 +3,9 @@ from .views import ProfileView, CabinetView
 from cars.views import CarsView, CarsAddView
 
 
+app_name = 'cabinet'
+
+
 urlpatterns = [
     path('', CabinetView.as_view(), name='cabinet'),
     path('profile/', ProfileView.as_view(), name='profile'),

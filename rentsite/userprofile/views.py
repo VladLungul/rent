@@ -25,7 +25,9 @@ class ProfileView(LoginRequiredMixin, View):
         return render(request, 'userprofile/profile.html', context={'form': form})
 
 
-class CabinetView(View):
-
+class CabinetView(LoginRequiredMixin, View):
+    login_url = reverse_lazy('login')
+    redirect_field_name = 'redirect_to'
+    
     def get(self, request):
         return render(request, 'userprofile/cabinet.html')
