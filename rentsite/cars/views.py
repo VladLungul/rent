@@ -8,7 +8,10 @@ from .forms import CarForm
 from . import models
 
 
-class CarsView(View):
+class CarsView(LoginRequiredMixin, View):
+    login_url = reverse_lazy('login')
+    redirect_field_name = 'redirect_to'
+    
     def get(self, request):
         cars = models.Car.objects.filter(owner=request.user)
         return render(request, 'cars/car-list.html', {'cars': cars})        
