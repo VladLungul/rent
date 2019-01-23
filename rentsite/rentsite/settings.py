@@ -37,6 +37,7 @@ LOCAL_APPS = [
     'mainapp',
     'userprofile',
     'cars',
+    'orders',
 ]
 
 INSTALLED_APPS = CORE_APPS + THIRD_PARTY_APPS + LOCAL_APPS

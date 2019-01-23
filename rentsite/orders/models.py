@@ -12,6 +12,6 @@ class Order(models.Model):
     finishtime = models.DateTimeField()
     city = models.CharField(max_length=25)
     owner_id = models.CharField(max_length=25)
-    rent_type = models.CharField(choices=RENT_TYPE)
+    rent_type = models.CharField(choices=RENT_TYPE, max_length=25)
     discount = models.CharField(max_length=25)
 
